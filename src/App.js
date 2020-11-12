@@ -1,18 +1,14 @@
-import logo from './logo.svg';
-import { Button } from 'antd';
 import './App.less';
+import { Link } from 'react-router-dom';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
-        <Button type="primary">Button</Button>
-      </header>
+    <div>
+      <div>app页面</div>
+      <Link to="/home" />
+      <Link to="/about" />
+      <Link to="/me" />
+      {props.children}
     </div>
   );
 }
