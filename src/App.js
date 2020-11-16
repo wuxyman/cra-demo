@@ -1,16 +1,23 @@
-import './App.less';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import { Provider } from 'mobx-react';
+import routes from './routes';
+import { AppStore } from './store/app';
 
-function App(props) {
+const supportsHistory = 'pushState' in window.history;
+const defaultStore = new AppStore();
+
+window.store = defaultStore;
+
+const App = (props) => {
   return (
-    <div>
-      <div>app页面</div>
-      <Link to="/home" />
-      <Link to="/about" />
-      <Link to="/me" />
-      {props.children}
-    </div>
+    <Provider store={defaultStore}>
+      <Router forceRefresh={!supportsHistory}>
+        <div>{renderRoutes(routes)}</div>
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;
