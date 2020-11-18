@@ -5,6 +5,8 @@ import './index.less';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
+console.log('process.env=========', process.env);
+
 /**
  * 强制使用action改变
  */
