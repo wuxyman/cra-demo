@@ -3,7 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry:{
-        react:['react','react-dom','react-router-dom','mobx','mobx-react']
+        react:['react','react-dom']
     },
     output:{
         filename:'[name].dll.js',
