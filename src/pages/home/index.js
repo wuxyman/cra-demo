@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { observer } from 'mobx-react';
 import { toJS } from 'mobx';
-import { useAppStore, useUIStore } from '../../hooks';
+import { useAppStore, useUIStore } from '@/hooks';
 import { Button } from 'antd';
 
 const Home = observer((props) => {
@@ -48,6 +48,13 @@ const Home = observer((props) => {
       <Button type="primary" onClick={() => uiStore.upLoading(true)}>
         更新状态
       </Button>
+      <div>------------------------</div>
+      <Button type="primary" onClick={() => appStore.addList()}>
+        增加一条
+      </Button>
+      {appStore.list.map((item) => {
+        return <div key={item.name}>{item.name}</div>;
+      })}
       {renderRoutes(props.route.children)}
     </div>
   );

@@ -30,7 +30,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "dll": "webpack --config webpack.dll.config.js",
+    "start:dll":"webpack --config webpack.dll.config.js && npm run start",
+    "build:dll": "webpack --config webpack.dll.config.js && npm run build",
     "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"
   },

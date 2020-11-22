@@ -17,6 +17,18 @@ export class AppStore {
   @observable
   count = 0;
 
+  @observable
+  list = [{ name: 'w1' }, { name: 'w2' }, { name: 'w3' }];
+  @action
+  addList = () => {
+    this.list.push({ name: 'w4' });
+  };
+
+  @action
+  changeObj() {
+    this.obj.name = 'aaa';
+  }
+
   @action
   increment() {
     this.count = this.count + 1;

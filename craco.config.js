@@ -11,10 +11,6 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const pathResolve = pathUrl => path.join(__dirname, pathUrl)
 
 module.exports = {
-  devServer:(devServerConfig,{env,paths,resolve,rootDir})=>{
-    console.log('devServerConfig----',devServerConfig,env,paths,resolve,rootDir);
-    return devServerConfig;
-  },
   webpack: {
     alias: {
       '@@': pathResolve('.'),
