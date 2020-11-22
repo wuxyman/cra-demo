@@ -26,19 +26,25 @@ module.exports = {
     },
     plugins:[
        // 打压缩包
-      new CompressionWebpackPlugin({
-        algorithm: 'gzip',
-        test: new RegExp(
-            '\\.(' +
-            ['js', 'css'].join('|') +
-            ')$'
-        ),
-        threshold: 1024,
-        minRatio: 0.8
-      }),
+      // new CompressionWebpackPlugin({
+      //   algorithm: 'gzip',
+      //   test: new RegExp(
+      //       '\\.(' +
+      //       ['js', 'css'].join('|') +
+      //       ')$'
+      //   ),
+      //   threshold: 1024,
+      //   minRatio: 0.8
+      // }),
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       new SimpleProgressWebpackPlugin(),
+      new webpack.DllReferencePlugin({
+        manifest:path.resolve(__dirname,'public','dll','react.manifest.json')
+      })
     ],
+    // configure: (webpackConfig, { env, paths }) => { 
+    //   return webpackConfig; 
+    // }
   },
   plugins: [
       {

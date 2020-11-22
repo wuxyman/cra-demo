@@ -30,6 +30,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "dll": "webpack --config webpack.dll.config.js",
     "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"
   },
@@ -61,5 +62,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "serve": "^11.3.2",
+    "webpack-cli": "^4.2.0"
   }
 }
