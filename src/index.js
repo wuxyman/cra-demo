@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { configure } from 'mobx';
 import './index.less';
 import App from './App';
+import Eruda from 'eruda';
+import UAParser from 'ua-parser-js';
 // import reportWebVitals from './reportWebVitals';
 
-console.log('process.env=========', process.env);
+const parser = new UAParser();
+const userAgentInfo = parser.getResult();
 
-/**
- * 强制使用action改变
- */
-configure({
-  enforceActions: 'always',
-});
+const isMobile = () => {
+  return userAgentInfo.device.type === 'mobile';
+};
+
+// console.log('process.env=========', process.env);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
@@ -20,3 +21,13 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
+
+if (isMobile()) {
+  const el = document.createElement('div');
+  document.body.appendChild(el);
+
+  Eruda.init({
+    container: el,
+    tool: ['console', 'elements'],
+  });
+}
